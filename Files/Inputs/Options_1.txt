@@ -5,6 +5,7 @@
 1
 1
 0
+0
 
 
 #Topology
@@ -40,4 +41,6 @@
 #Physical Layer Option
     0 - Disabled
     1 - Enabled
-#
+#Transponder Option
+    0 - Disabled
+    1 - Enabled

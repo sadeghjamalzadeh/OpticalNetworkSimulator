@@ -27,8 +27,6 @@ class SA {
 
 public:
     
-    SA();
-    
     SA(ResourceAlloc* rsa, SpectrumAllocationOption option, Topology* topology);
     
     virtual ~SA();
@@ -36,9 +34,9 @@ public:
     
     void SpecAllocation(Call* call);
     
-    void Random(Call* call);
+    virtual void Random(Call* call);
     
-    void FirstFit(Call* call);
+    virtual void FirstFit(Call* call);
     
     void MostUsed(Call* call);
     
@@ -49,6 +47,9 @@ public:
     void RCL(Call* call);
     
     void MSCL(Call* call);
+    
+    
+    Topology* GetTopology() const;
 
 private:
     

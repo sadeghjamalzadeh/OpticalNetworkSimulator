@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/src/Calls/Call.o \
+	${OBJECTDIR}/src/Calls/CallDevices.o \
 	${OBJECTDIR}/src/Calls/CallGenerator.o \
 	${OBJECTDIR}/src/Calls/Event.o \
 	${OBJECTDIR}/src/Calls/Traffic.o \
@@ -53,10 +54,14 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/ResourceAllocation/Routing.o \
 	${OBJECTDIR}/src/ResourceAllocation/SA.o \
 	${OBJECTDIR}/src/ResourceAllocation/Signal.o \
+	${OBJECTDIR}/src/ResourceAllocation/TSA.o \
 	${OBJECTDIR}/src/SimulationType/MultiLoadSimulation.o \
+	${OBJECTDIR}/src/SimulationType/MultiNumSbvtSimulation.o \
 	${OBJECTDIR}/src/SimulationType/SimulationType.o \
+	${OBJECTDIR}/src/Structure/Devices/SBVT.o \
 	${OBJECTDIR}/src/Structure/Link.o \
 	${OBJECTDIR}/src/Structure/Node.o \
+	${OBJECTDIR}/src/Structure/Nodes/NodeSBVT.o \
 	${OBJECTDIR}/src/Structure/Topology.o
 
 
@@ -93,6 +98,11 @@ ${OBJECTDIR}/src/Calls/Call.o: src/Calls/Call.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Calls
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Calls/Call.o src/Calls/Call.cpp
+
+${OBJECTDIR}/src/Calls/CallDevices.o: src/Calls/CallDevices.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Calls
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Calls/CallDevices.o src/Calls/CallDevices.cpp
 
 ${OBJECTDIR}/src/Calls/CallGenerator.o: src/Calls/CallGenerator.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Calls
@@ -174,15 +184,30 @@ ${OBJECTDIR}/src/ResourceAllocation/Signal.o: src/ResourceAllocation/Signal.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ResourceAllocation/Signal.o src/ResourceAllocation/Signal.cpp
 
+${OBJECTDIR}/src/ResourceAllocation/TSA.o: src/ResourceAllocation/TSA.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/ResourceAllocation
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ResourceAllocation/TSA.o src/ResourceAllocation/TSA.cpp
+
 ${OBJECTDIR}/src/SimulationType/MultiLoadSimulation.o: src/SimulationType/MultiLoadSimulation.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/SimulationType
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SimulationType/MultiLoadSimulation.o src/SimulationType/MultiLoadSimulation.cpp
 
+${OBJECTDIR}/src/SimulationType/MultiNumSbvtSimulation.o: src/SimulationType/MultiNumSbvtSimulation.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/SimulationType
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SimulationType/MultiNumSbvtSimulation.o src/SimulationType/MultiNumSbvtSimulation.cpp
+
 ${OBJECTDIR}/src/SimulationType/SimulationType.o: src/SimulationType/SimulationType.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/SimulationType
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SimulationType/SimulationType.o src/SimulationType/SimulationType.cpp
+
+${OBJECTDIR}/src/Structure/Devices/SBVT.o: src/Structure/Devices/SBVT.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Structure/Devices
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Devices/SBVT.o src/Structure/Devices/SBVT.cpp
 
 ${OBJECTDIR}/src/Structure/Link.o: src/Structure/Link.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Structure
@@ -193,6 +218,11 @@ ${OBJECTDIR}/src/Structure/Node.o: src/Structure/Node.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Structure
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Node.o src/Structure/Node.cpp
+
+${OBJECTDIR}/src/Structure/Nodes/NodeSBVT.o: src/Structure/Nodes/NodeSBVT.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Structure/Nodes
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Nodes/NodeSBVT.o src/Structure/Nodes/NodeSBVT.cpp
 
 ${OBJECTDIR}/src/Structure/Topology.o: src/Structure/Topology.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Structure

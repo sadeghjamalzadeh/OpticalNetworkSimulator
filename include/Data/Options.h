@@ -86,6 +86,7 @@ enum TrafficOption {
 enum ResourceAllocOption {
     ResourAllocInvalid,
     ResourAllocRSA,
+    ResourAllocRTSA,
     ResourAllocRMSA,
     FirstResourAllocOption = ResourAllocRSA,
     LastResourAllocOption = ResourAllocRMSA
@@ -251,7 +252,7 @@ public:
     
     TransponderOption GetTransponderOption() const;
     
-    std::string GetTranspponderOptionName() const;
+    std::string GetTransponderOptionName() const;
 
     void SetTransponderOption(TransponderOption transponderOption);
 

@@ -106,6 +106,11 @@ public:
      * @return Length of the longest link
      */
     double GetMaxLength() const;
+    
+    unsigned int GetNumberDevicesPerNode() const;
+
+    void SetNumberDevicesPerNode(unsigned int numberDevicesPerNode);
+
     /**
      * @brief Set additional settings of this topology
      */
@@ -215,6 +220,8 @@ private:
      * @brief Length of the longest link
      */
     double maxLength;
+    
+    unsigned int numberDevicesPerNode;
     
     /**
      * @brief Calculate the maximum link in this topology

@@ -16,10 +16,6 @@
 #include "../../include/ResourceAllocation/Route.h"
 #include "../../include/Structure/Topology.h"
 
-SA::SA() {
-    
-}
-
 SA::SA(ResourceAlloc* rsa, SpectrumAllocationOption option, Topology* topology) 
 :resourceAlloc(rsa), specAllOption(option), topology(topology) {
     
@@ -88,4 +84,8 @@ void SA::FirstFit(Call* call) {
         else
             sumslots = 0;
     }
+}
+
+Topology* SA::GetTopology() const {
+    return topology;
 }

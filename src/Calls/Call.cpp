@@ -35,15 +35,6 @@ std::ostream& operator<<(std::ostream& ostream, const Call* call) {
     return ostream;
 }
 
-Call::Call()
-:status(NotEvaluated), orNode(nullptr), deNode(nullptr), firstSlot(-1), 
-lastSlot(-1), numberSlots(0), osnrTh(0.0), bandwidth(0.0), bitRate(0.0), 
-modulation(InvalidModulation), deactivationTime(Def::Max_Double), 
-route(nullptr), trialRoutes(0){
-
-}
-
-
 Call::Call(Node* orNode, Node* deNode, double bitRate, 
 TIME deacTime)
 :status(NotEvaluated), orNode(orNode), deNode(deNode), firstSlot(-1), 

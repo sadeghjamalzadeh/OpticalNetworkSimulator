@@ -18,6 +18,7 @@
 #include "../../include/Data/Parameters.h"
 #include "../../include/Data/InputOutput.h"
 #include "../../include/Structure/Node.h"
+#include "../../include/Structure/Nodes/NodeSBVT.h"
 #include "../../include/Structure/Link.h"
 #include "../../include/GeneralClasses/Def.h"
 #include "../../include/ResourceAllocation/Route.h"
@@ -49,7 +50,8 @@ const Topology* topology) {
 
 Topology::Topology(SimulationType* simulType) 
 :simulType(simulType), vecNodes(0), vecLinks(0), 
-numNodes(0), numLinks(0), numSlots(0), maxLength(0.0) {
+numNodes(0), numLinks(0), numSlots(0), maxLength(0.0),
+numberDevicesPerNode(0) {
 
 }
 
@@ -98,7 +100,15 @@ void Topology::CreateNodes(std::ifstream& ifstream) {
     
     std::shared_ptr<Node> node;
     for(unsigned int a = 0; a < this->GetNumNodes(); ++a){
-        node = std::make_shared<Node>(this, a);
+        
+        switch(this->simulType->GetOptions()->GetTransponderOption()){
+            case TransOptionDisabled:
+                node = std::make_shared<Node>(this, a);
+                break;
+            case TransOptionEnabled:
+                node = std::make_shared<NodeSBVT>(this, a);
+                break;
+        }
         this->InsertNode(node);
         node.reset();
     }
@@ -172,6 +182,18 @@ void Topology::InsertNode(std::shared_ptr<Node> node) {
 
 double Topology::GetMaxLength() const {
     return maxLength;
+}
+
+unsigned int Topology::GetNumberDevicesPerNode() const {
+    return numberDevicesPerNode;
+}
+
+void Topology::SetNumberDevicesPerNode(unsigned int numberDevicesPerNode) {
+    this->numberDevicesPerNode = numberDevicesPerNode;
+    
+    for(auto it : this->vecNodes){
+        it->SetDevices(numberDevicesPerNode);
+    }
 }
 
 void Topology::SetMaxLength() {
@@ -339,7 +361,7 @@ bool Topology::IsValidLigthPath(Call* call) {
         (this->IsValidSlot(call->GetLastSlot())) ){
         return true;
     }
-        
+    
     return false;
 }
 
@@ -357,7 +379,6 @@ void Topology::Connect(Call* call) {
             }
         }
     }
-    
 }
 
 void Topology::Release(Call* call) {

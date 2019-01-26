@@ -56,6 +56,7 @@ const boost::unordered_map<ResourceAllocOption, std::string>
 Options::mapResourAllocOption = boost::assign::map_list_of
     (ResourAllocInvalid, "Invalid")
     (ResourAllocRSA, "RSA")
+    (ResourAllocRTSA, "RTSA")
     (ResourAllocRMSA, "RMSA");
 
 const boost::unordered_map<PhysicalLayerOption, std::string>
@@ -84,6 +85,8 @@ const Options* options) {
     ostream << "Resource Allocation: " << options->GetResourAllocName()
             << std::endl;
     ostream << "Physical Layer: " << options->GetPhyLayerName()
+            << std::endl;
+    ostream << "Transponder: " << options->GetTransponderOptionName()
             << std::endl;
     
     return ostream;
@@ -168,6 +171,15 @@ void Options::Load() {
     std::cin >> auxInt;
     this->SetPhyLayerOption((PhysicalLayerOption) auxInt);
     
+    std::cout << "Transponder options" << std::endl;
+    for(TransponderOption a = TransOptionDisabled; a <= TransOptionEnabled;
+    a = TransponderOption(a+1)){
+        std::cout << a << "-" << this->mapTransponderOption.at(a) << std::endl;
+    }
+    std::cout << "Insert the transponder option: ";
+    std::cin >> auxInt;
+    this->SetTransponderOption((TransponderOption) auxInt);
+    
     std::cout << std::endl;
 }
 
@@ -190,6 +202,8 @@ void Options::LoadFile() {
     this->SetResourAllocOption((ResourceAllocOption) auxInt);
     auxIfstream >> auxInt;
     this->SetPhyLayerOption((PhysicalLayerOption) auxInt);
+    auxIfstream >> auxInt;
+    this->SetTransponderOption((TransponderOption) auxInt);
 }
 
 void Options::Save() {
@@ -298,7 +312,7 @@ TransponderOption Options::GetTransponderOption() const {
     return transponderOption;
 }
 
-std::string Options::GetTranspponderOptionName() const {
+std::string Options::GetTransponderOptionName() const {
     return this->mapTransponderOption.at(this->transponderOption);
 }
 

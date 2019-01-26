@@ -78,6 +78,9 @@ public:
      * @param max Progress total value.
      */
     void PrintProgressBar(unsigned int actual, unsigned int max);
+    
+    void PrintProgressBar(unsigned int actual, unsigned int min, 
+                          unsigned int max);
 
 private:
     /**

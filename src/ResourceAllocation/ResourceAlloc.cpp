@@ -16,6 +16,7 @@
 #include "../../include/Structure/Topology.h"
 #include "../../include/ResourceAllocation/Routing.h"
 #include "../../include/ResourceAllocation/SA.h"
+#include "../../include/ResourceAllocation/TSA.h"
 #include "../../include/Data/Options.h"
 #include "../../include/Data/Parameters.h"
 #include "../../include/Calls/Call.h"
@@ -46,13 +47,20 @@ void ResourceAlloc::Load() {
     
     this->allRoutes.resize(numNodes*numNodes);
     
-    this->routing = std::make_shared<Routing>(this, 
+    this->routing = std::make_shared<Routing>(this,
         this->simulType->GetOptions()->GetRoutingOption(), this->topology);
     
-    this->specAlloc = std::make_shared<SA>(this, 
-        this->simulType->GetOptions()->GetSpecAllOption(), this->topology);
-    
-    this->modulation = std::make_shared<Modulation>(this, 
+    switch(this->simulType->GetOptions()->GetTransponderOption()){
+        case TransOptionEnabled:
+            this->specAlloc = std::make_shared<TSA>(this,
+            this->simulType->GetOptions()->GetSpecAllOption(), this->topology);
+            break;
+        default:
+            this->specAlloc = std::make_shared<SA>(this,
+            this->simulType->GetOptions()->GetSpecAllOption(), this->topology);
+    }
+        
+    this->modulation = std::make_shared<Modulation>(this,
         this->simulType->GetParameters()->GetSlotBandwidth());
     
     this->resourAllocOption = this->simulType->GetOptions()->
@@ -65,6 +73,7 @@ void ResourceAlloc::ResourAlloc(Call* call) {
     
     switch(this->resourAllocOption){
         case ResourAllocRSA:
+        case ResourAllocRTSA:
             call->SetModulation(FixedModulation);
             this->RSA(call);
             break;

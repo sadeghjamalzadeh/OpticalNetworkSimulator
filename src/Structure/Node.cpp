@@ -33,6 +33,18 @@ void Node::Initialize() {
     
 }
 
+void Node::SetDevices(unsigned int numDevices) {
+
+}
+
+void Node::Connect() {
+
+}
+
+void Node::Desconnect() {
+
+}
+
 NodeId Node::GetNodeId() const {
     return nodeId;
 }
