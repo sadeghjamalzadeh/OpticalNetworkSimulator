@@ -14,10 +14,12 @@
 #include "../../include/Calls/CallDevices.h"
 
 CallDevices::CallDevices(Node* orNode, Node* deNode, double bitRate, 
-TIME deacTime):Call(orNode, deNode, bitRate, deacTime) {
+TIME deacTime):Call(orNode, deNode, bitRate, deacTime), orSVBT(nullptr),
+deSBVT(nullptr) {
     
 }
 
 CallDevices::~CallDevices() {
+    
 }
 

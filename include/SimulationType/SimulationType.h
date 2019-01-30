@@ -178,7 +178,6 @@ public:
      */
     void SetResourceAlloc(std::shared_ptr<ResourceAlloc> rsaAlgorithm);
 
-
 private:
     /**
      * @brief Initialize all the simulation parameters, such as

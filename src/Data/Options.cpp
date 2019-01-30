@@ -56,7 +56,6 @@ const boost::unordered_map<ResourceAllocOption, std::string>
 Options::mapResourAllocOption = boost::assign::map_list_of
     (ResourAllocInvalid, "Invalid")
     (ResourAllocRSA, "RSA")
-    (ResourAllocRTSA, "RTSA")
     (ResourAllocRMSA, "RMSA");
 
 const boost::unordered_map<PhysicalLayerOption, std::string>
@@ -67,7 +66,9 @@ Options::mapPhyLayerOption = boost::assign::map_list_of
 const boost::unordered_map<TransponderOption, std::string>
 Options::mapTransponderOption = boost::assign::map_list_of
     (TransOptionDisabled, "Disabled")
-    (TransOptionEnabled, "Enabled");
+    (TransOptionML, "ML-SBVT")
+    (TransOptionMW, "MW-SBVT")
+    (TransOptionMixed, "Mixed SBVT (ML and MW");
 
 std::ostream& operator<<(std::ostream& ostream,
 const Options* options) {
@@ -172,7 +173,7 @@ void Options::Load() {
     this->SetPhyLayerOption((PhysicalLayerOption) auxInt);
     
     std::cout << "Transponder options" << std::endl;
-    for(TransponderOption a = TransOptionDisabled; a <= TransOptionEnabled;
+    for(TransponderOption a = FirstTransOption; a <= LastTransOption;
     a = TransponderOption(a+1)){
         std::cout << a << "-" << this->mapTransponderOption.at(a) << std::endl;
     }

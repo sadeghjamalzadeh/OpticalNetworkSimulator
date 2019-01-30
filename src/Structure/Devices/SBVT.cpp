@@ -14,8 +14,9 @@
 #include "../../../include/Structure/Devices/SBVT.h"
 
 SBVT::SBVT(Node* node)
-:node(node), numberCarriers(0), carriersState(0), centralFrequencies(0) {
-
+:node(node), state(false), carriersState(0), 
+centralFrequencies(0) {
+    
 }
 
 SBVT::~SBVT() {
@@ -23,5 +24,11 @@ SBVT::~SBVT() {
 }
 
 void SBVT::Initialize() {
+    this->state = false;
+    this->carriersState.assign(this->numberCarriers, false);
+    this->centralFrequencies.assign(this->numberCarriers, 0.0);
+}
 
+const unsigned int SBVT::GetNumberCarriers() const {
+    return numberCarriers;
 }

@@ -14,10 +14,9 @@
 #ifndef SBVT_H
 #define SBVT_H
 
-class Node;
-
 #include <vector>
 
+class Node;
 
 class SBVT {
 
@@ -29,12 +28,17 @@ public:
     
     
     virtual void Initialize();
+    
+    
+    const unsigned int GetNumberCarriers() const;
 
 private:
     
     Node* node;
     
-    unsigned int numberCarriers;
+    bool state;
+    
+    const unsigned int numberCarriers = 3;
     
     std::vector<bool> carriersState;
     
@@ -42,4 +46,3 @@ private:
 };
 
 #endif /* SBVT_H */
-

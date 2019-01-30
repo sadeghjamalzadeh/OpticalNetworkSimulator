@@ -110,6 +110,8 @@ public:
     unsigned int GetNumberDevicesPerNode() const;
 
     void SetNumberDevicesPerNode(unsigned int numberDevicesPerNode);
+    
+    void SetNumberDevicesPerNode();
 
     /**
      * @brief Set additional settings of this topology
@@ -186,7 +188,6 @@ public:
      */
     bool IsValidLigthPath(Call* call);
     
-    
     void Connect(Call* call);
     
     void Release(Call* call);
@@ -220,8 +221,6 @@ private:
      * @brief Length of the longest link
      */
     double maxLength;
-    
-    unsigned int numberDevicesPerNode;
     
     /**
      * @brief Calculate the maximum link in this topology

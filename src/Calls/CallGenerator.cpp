@@ -16,8 +16,10 @@
 #include "../../include/SimulationType/SimulationType.h"
 #include "../../include/Structure/Topology.h"
 #include "../../include/Data/Parameters.h"
+#include "../../include/Data/Options.h"
 #include "../../include/Calls/Traffic.h"
 #include "../../include/Calls/Call.h"
+#include "../../include/Calls/CallDevices.h"
 #include "../../include/Calls/Event.h"
 
 std::default_random_engine CallGenerator::random_generator(0);
@@ -83,18 +85,30 @@ void CallGenerator::GenerateCall() {
     TIME deactvationTime = exponencialMuDistribution(random_generator);
     
     //Call creation
-    std::shared_ptr<Call> newCall =
-    std::make_shared<Call>(this->topology->GetNode(auxIndexOrNode),
-                           this->topology->GetNode(auxIndexDeNode),
-                           this->traffic->GetTraffic(auxIndexTraffic),
-                           deactvationTime);
+    std::shared_ptr<Call> newCall;
+    switch(this->simulType->GetOptions()->GetTransponderOption()){
+        case TransOptionDisabled:
+            newCall = std::make_shared<Call>(this->topology->
+                      GetNode(auxIndexOrNode),
+                      this->topology->GetNode(auxIndexDeNode),
+                      this->traffic->GetTraffic(auxIndexTraffic),
+                      deactvationTime);
+            break;
+        default:
+            newCall = std::make_shared<CallDevices>(this->topology->
+                      GetNode(auxIndexOrNode), 
+                      this->topology->GetNode(auxIndexDeNode), 
+                      this->traffic->GetTraffic(auxIndexTraffic), 
+                      deactvationTime);
+    }
+    
     
     //Event creation from the call created before
     std::shared_ptr<Event> newEvent = 
     std::make_shared<Event>(this, newCall, this->GetSimulationTime() + 
                             arrivalTime);
     
-    queueEvents.push(newEvent);
+    this->queueEvents.push(newEvent);
 }
 
 SimulationType* CallGenerator::GetSimulType() const {

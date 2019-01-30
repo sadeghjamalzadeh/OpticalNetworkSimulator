@@ -50,8 +50,7 @@ const Topology* topology) {
 
 Topology::Topology(SimulationType* simulType) 
 :simulType(simulType), vecNodes(0), vecLinks(0), 
-numNodes(0), numLinks(0), numSlots(0), maxLength(0.0),
-numberDevicesPerNode(0) {
+numNodes(0), numLinks(0), numSlots(0), maxLength(0.0) {
 
 }
 
@@ -105,9 +104,8 @@ void Topology::CreateNodes(std::ifstream& ifstream) {
             case TransOptionDisabled:
                 node = std::make_shared<Node>(this, a);
                 break;
-            case TransOptionEnabled:
+            default:
                 node = std::make_shared<NodeSBVT>(this, a);
-                break;
         }
         this->InsertNode(node);
         node.reset();
@@ -185,15 +183,37 @@ double Topology::GetMaxLength() const {
 }
 
 unsigned int Topology::GetNumberDevicesPerNode() const {
-    return numberDevicesPerNode;
+    
+    if(this->simulType->GetOptions()->GetTransponderOption() 
+    != TransOptionDisabled){
+        std::shared_ptr<NodeSBVT> node = std::static_pointer_cast<NodeSBVT>(
+                                         this->vecNodes.front());
+
+        return node->GetNumberSBVT();
+    }
+    else
+        return 0;
 }
 
 void Topology::SetNumberDevicesPerNode(unsigned int numberDevicesPerNode) {
-    this->numberDevicesPerNode = numberDevicesPerNode;
     
-    for(auto it : this->vecNodes){
-        it->SetDevices(numberDevicesPerNode);
+    if(this->simulType->GetOptions()->GetTransponderOption() 
+    != TransOptionDisabled){
+        std::shared_ptr<NodeSBVT> node;
+        
+        for(auto it : this->vecNodes){
+            node = std::dynamic_pointer_cast<NodeSBVT>(it);
+            node->SetDevices(numberDevicesPerNode);
+        }
     }
+}
+
+void Topology::SetNumberDevicesPerNode() {
+    //Get input file
+    
+    //Each value must be assigned for each node
+    
+    //Think  in a way to set different types of SBVTs
 }
 
 void Topology::SetMaxLength() {

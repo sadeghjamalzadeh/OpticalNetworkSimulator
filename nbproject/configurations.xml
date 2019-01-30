@@ -3,6 +3,9 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="f1" displayName="Files" projectFiles="true">
       <logicalFolder name="f1" displayName="Inputs" projectFiles="true">
+        <logicalFolder name="f3" displayName="Devices" projectFiles="true">
+          <itemPath>Files/Devices/Transponders.txt</itemPath>
+        </logicalFolder>
         <logicalFolder name="f1" displayName="Topologies" projectFiles="true">
           <itemPath>Files/Inputs/Topologies/Germany.txt</itemPath>
           <itemPath>Files/Inputs/Topologies/Italy.txt</itemPath>
@@ -28,6 +31,7 @@
                    projectFiles="true">
       <logicalFolder name="f4" displayName="Calls" projectFiles="true">
         <itemPath>include/Calls/Call.h</itemPath>
+        <itemPath>include/Calls/CallDevices.h</itemPath>
         <itemPath>include/Calls/CallGenerator.h</itemPath>
         <itemPath>include/Calls/Event.h</itemPath>
         <itemPath>include/Calls/Traffic.h</itemPath>
@@ -58,6 +62,10 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="Structure" projectFiles="true">
         <logicalFolder name="f1" displayName="Devices" projectFiles="true">
+          <logicalFolder name="f1" displayName="SBVT" projectFiles="true">
+            <itemPath>include/Structure/Devices/SBVT/ML_SBVT.h</itemPath>
+          </logicalFolder>
+          <itemPath>include/Structure/Devices/Laser.h</itemPath>
           <itemPath>include/Structure/Devices/SBVT.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="Nodes" projectFiles="true">
@@ -67,8 +75,8 @@
         <itemPath>include/Structure/Node.h</itemPath>
         <itemPath>include/Structure/Topology.h</itemPath>
       </logicalFolder>
-      <itemPath>include/Calls/CallDevices.h</itemPath>
       <itemPath>include/Kernel.h</itemPath>
+      <itemPath>include/Structure/Devices/SBVT/MW_SBVT.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -79,6 +87,7 @@
                    projectFiles="true">
       <logicalFolder name="f4" displayName="Calls" projectFiles="true">
         <itemPath>src/Calls/Call.cpp</itemPath>
+        <itemPath>src/Calls/CallDevices.cpp</itemPath>
         <itemPath>src/Calls/CallGenerator.cpp</itemPath>
         <itemPath>src/Calls/Event.cpp</itemPath>
         <itemPath>src/Calls/Traffic.cpp</itemPath>
@@ -109,6 +118,10 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="Structure" projectFiles="true">
         <logicalFolder name="f1" displayName="Devices" projectFiles="true">
+          <logicalFolder name="f1" displayName="SBVT" projectFiles="true">
+            <itemPath>src/Structure/Devices/SBVT/ML_SBVT.cpp</itemPath>
+          </logicalFolder>
+          <itemPath>src/Structure/Devices/Laser.cpp</itemPath>
           <itemPath>src/Structure/Devices/SBVT.cpp</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="Nodes" projectFiles="true">
@@ -118,8 +131,8 @@
         <itemPath>src/Structure/Node.cpp</itemPath>
         <itemPath>src/Structure/Topology.cpp</itemPath>
       </logicalFolder>
-      <itemPath>src/Calls/CallDevices.cpp</itemPath>
       <itemPath>src/Kernel.cpp</itemPath>
+      <itemPath>src/Structure/Devices/SBVT/MW_SBVT.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -152,6 +165,8 @@
           <warningLevel>2</warningLevel>
         </ccTool>
       </compileType>
+      <item path="Files/Devices/Transponders.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Files/Inputs/Options_1.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Files/Inputs/Parameters_1.txt" ex="false" tool="3" flavor2="0">
@@ -249,7 +264,19 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Structure/Devices/Laser.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Structure/Devices/SBVT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Structure/Devices/SBVT/ML_SBVT.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Structure/Devices/SBVT/MW_SBVT.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="include/Structure/Link.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -320,7 +347,19 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Structure/Devices/Laser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Structure/Devices/SBVT.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Structure/Devices/SBVT/ML_SBVT.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Structure/Devices/SBVT/MW_SBVT.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/Structure/Link.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -352,6 +391,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Files/Devices/Transponders.txt" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Files/Inputs/Options_1.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Files/Inputs/Parameters_1.txt" ex="false" tool="3" flavor2="0">
@@ -449,7 +490,19 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="include/Structure/Devices/Laser.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="include/Structure/Devices/SBVT.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="include/Structure/Devices/SBVT/ML_SBVT.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="include/Structure/Devices/SBVT/MW_SBVT.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="include/Structure/Link.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -520,7 +573,19 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="src/Structure/Devices/Laser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/Structure/Devices/SBVT.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/Structure/Devices/SBVT/ML_SBVT.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="src/Structure/Devices/SBVT/MW_SBVT.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="src/Structure/Link.cpp" ex="false" tool="1" flavor2="0">
       </item>

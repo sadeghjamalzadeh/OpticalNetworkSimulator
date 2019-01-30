@@ -33,10 +33,6 @@ void Node::Initialize() {
     
 }
 
-void Node::SetDevices(unsigned int numDevices) {
-
-}
-
 void Node::Connect() {
 
 }

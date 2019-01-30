@@ -58,7 +58,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/SimulationType/MultiLoadSimulation.o \
 	${OBJECTDIR}/src/SimulationType/MultiNumSbvtSimulation.o \
 	${OBJECTDIR}/src/SimulationType/SimulationType.o \
+	${OBJECTDIR}/src/Structure/Devices/Laser.o \
 	${OBJECTDIR}/src/Structure/Devices/SBVT.o \
+	${OBJECTDIR}/src/Structure/Devices/SBVT/ML_SBVT.o \
+	${OBJECTDIR}/src/Structure/Devices/SBVT/MW_SBVT.o \
 	${OBJECTDIR}/src/Structure/Link.o \
 	${OBJECTDIR}/src/Structure/Node.o \
 	${OBJECTDIR}/src/Structure/Nodes/NodeSBVT.o \
@@ -204,10 +207,25 @@ ${OBJECTDIR}/src/SimulationType/SimulationType.o: src/SimulationType/SimulationT
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SimulationType/SimulationType.o src/SimulationType/SimulationType.cpp
 
+${OBJECTDIR}/src/Structure/Devices/Laser.o: src/Structure/Devices/Laser.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Structure/Devices
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Devices/Laser.o src/Structure/Devices/Laser.cpp
+
 ${OBJECTDIR}/src/Structure/Devices/SBVT.o: src/Structure/Devices/SBVT.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Structure/Devices
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Devices/SBVT.o src/Structure/Devices/SBVT.cpp
+
+${OBJECTDIR}/src/Structure/Devices/SBVT/ML_SBVT.o: src/Structure/Devices/SBVT/ML_SBVT.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Structure/Devices/SBVT
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Devices/SBVT/ML_SBVT.o src/Structure/Devices/SBVT/ML_SBVT.cpp
+
+${OBJECTDIR}/src/Structure/Devices/SBVT/MW_SBVT.o: src/Structure/Devices/SBVT/MW_SBVT.cpp
+	${MKDIR} -p ${OBJECTDIR}/src/Structure/Devices/SBVT
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Structure/Devices/SBVT/MW_SBVT.o src/Structure/Devices/SBVT/MW_SBVT.cpp
 
 ${OBJECTDIR}/src/Structure/Link.o: src/Structure/Link.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/Structure

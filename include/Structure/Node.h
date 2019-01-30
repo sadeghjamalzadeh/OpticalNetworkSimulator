@@ -52,8 +52,6 @@ public:
      */
     virtual void Initialize();
     
-    virtual void SetDevices(unsigned int numDevices);
-    
     virtual void Connect();
     
     virtual void Desconnect();

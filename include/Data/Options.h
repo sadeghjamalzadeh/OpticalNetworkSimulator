@@ -86,7 +86,6 @@ enum TrafficOption {
 enum ResourceAllocOption {
     ResourAllocInvalid,
     ResourAllocRSA,
-    ResourAllocRTSA,
     ResourAllocRMSA,
     FirstResourAllocOption = ResourAllocRSA,
     LastResourAllocOption = ResourAllocRMSA
@@ -99,7 +98,11 @@ enum PhysicalLayerOption {
 
 enum TransponderOption {
     TransOptionDisabled,
-    TransOptionEnabled
+    TransOptionML,
+    TransOptionMW,
+    TransOptionMixed,
+    FirstTransOption = TransOptionDisabled,
+    LastTransOption = TransOptionMixed
 };
 
 /**

@@ -35,12 +35,11 @@ public:
     
     void Initialize() override;
     
-    void SetDevices(unsigned int numDevices) override;
-    
     void Connect() override;
     
     void Desconnect() override;
     
+    void SetDevices(unsigned int numDevices);
     
     unsigned int GetNumberSBVT() const;
 

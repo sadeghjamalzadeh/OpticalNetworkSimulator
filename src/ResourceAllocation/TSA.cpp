@@ -23,6 +23,19 @@ TSA::~TSA() {
     
 }
 
+void TSA::SpecAllocation(Call* call) {
+    switch(this->GetSpecAllOption()){
+        case SpecAllRandom:
+            this->Random(call);
+            break;
+        case SpecAllFF:
+            this->FirstFit(call);
+            break;
+        default:
+            std::cerr << "Invalid spectrum allocation option" << std::endl;
+    }
+}
+
 void TSA::Random(Call* call) {
 
 }

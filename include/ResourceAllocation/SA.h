@@ -32,7 +32,7 @@ public:
     virtual ~SA();
     
     
-    void SpecAllocation(Call* call);
+    virtual void SpecAllocation(Call* call);
     
     virtual void Random(Call* call);
     
@@ -50,6 +50,8 @@ public:
     
     
     Topology* GetTopology() const;
+
+    SpectrumAllocationOption GetSpecAllOption() const;
 
 private:
     

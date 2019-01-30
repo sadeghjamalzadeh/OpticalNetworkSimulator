@@ -89,3 +89,7 @@ void SA::FirstFit(Call* call) {
 Topology* SA::GetTopology() const {
     return topology;
 }
+
+SpectrumAllocationOption SA::GetSpecAllOption() const {
+    return specAllOption;
+}

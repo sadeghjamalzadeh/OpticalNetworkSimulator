@@ -51,12 +51,12 @@ void ResourceAlloc::Load() {
         this->simulType->GetOptions()->GetRoutingOption(), this->topology);
     
     switch(this->simulType->GetOptions()->GetTransponderOption()){
-        case TransOptionEnabled:
-            this->specAlloc = std::make_shared<TSA>(this,
+        case TransOptionDisabled:
+            this->specAlloc = std::make_shared<SA>(this,
             this->simulType->GetOptions()->GetSpecAllOption(), this->topology);
             break;
         default:
-            this->specAlloc = std::make_shared<SA>(this,
+            this->specAlloc = std::make_shared<TSA>(this,
             this->simulType->GetOptions()->GetSpecAllOption(), this->topology);
     }
         
@@ -73,7 +73,6 @@ void ResourceAlloc::ResourAlloc(Call* call) {
     
     switch(this->resourAllocOption){
         case ResourAllocRSA:
-        case ResourAllocRTSA:
             call->SetModulation(FixedModulation);
             this->RSA(call);
             break;

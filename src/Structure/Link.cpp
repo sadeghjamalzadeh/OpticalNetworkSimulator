@@ -38,7 +38,7 @@ unsigned int numberSections, unsigned int numberSlots)
 :origimNode(origimNode), destinationNode(destinationNode), 
 length(length), numberSections(numberSections), cost(0.0),
 slotsStatus(0), linkWorking(true) {
-    slotsStatus.resize(numberSlots, SlotFree);
+    slotsStatus.assign(numberSlots, SlotFree);
 }
 
 Link::~Link() {
@@ -47,7 +47,7 @@ Link::~Link() {
 
 void Link::Initialize() {
     //Make all slots status for free
-    this->slotsStatus.resize(this->slotsStatus.size(), SlotFree);  
+    this->slotsStatus.assign(this->slotsStatus.size(), SlotFree);
 }
 
 unsigned int Link::GetOrigimNode() const {

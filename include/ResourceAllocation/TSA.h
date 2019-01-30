@@ -31,7 +31,8 @@ public:
     
     virtual ~TSA();
     
-    
+    void SpecAllocation(Call* call) override;
+
     void Random(Call* call) override;
     
     void FirstFit(Call* call) override;
